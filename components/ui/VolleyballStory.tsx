@@ -1,24 +1,55 @@
 "use client";
 
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useRef, useState, useSyncExternalStore } from "react";
 import {
   motion,
   useMotionValueEvent,
-  useReducedMotion,
   useScroll,
   useTransform,
 } from "framer-motion";
 
+const reducedMotionQuery = "(prefers-reduced-motion: reduce)";
+
+function subscribeToMotionPreference(onChange: () => void) {
+  const mediaQuery = window.matchMedia(reducedMotionQuery);
+  mediaQuery.addEventListener("change", onChange);
+  return () => mediaQuery.removeEventListener("change", onChange);
+}
+
+function getMotionPreference() {
+  return window.matchMedia(reducedMotionQuery).matches;
+}
+
+function getServerMotionPreference() {
+  return false;
+}
+
 const chapters = [
-  { label: "BUMP", image: "/coclash/home-team-photo-01.jpg" },
-  { label: "SET", image: "/coclash/d5ac41_2609fe3c2f2e4dc790c2efc0e8baba00_mv2.jpg" },
-  { label: "SPIKE", image: "/coclash/d5ac41_66abba3bd5764d9c85fd0218d75f8e6a_mv2.jpg" },
+  {
+    label: "BUMP",
+    image: "/coclash/story-bump.jpg",
+    alt: "Colorado Clash girls team together on the court.",
+  },
+  {
+    label: "SET",
+    image: "/coclash/story-set.jpg",
+    alt: "Colorado Clash boys team gathered before play.",
+  },
+  {
+    label: "SPIKE",
+    image: "/coclash/story-spike.jpg",
+    alt: "Colorado Clash players competing on the court.",
+  },
 ];
 
 export function VolleyballStory() {
   const sectionRef = useRef<HTMLElement>(null);
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeToMotionPreference,
+    getMotionPreference,
+    getServerMotionPreference,
+  );
   const [activeChapter, setActiveChapter] = useState(0);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -66,32 +97,18 @@ export function VolleyballStory() {
     <section
       ref={sectionRef}
       aria-label="Volleyball play sequence"
-      className="relative h-[300vh] bg-[#100816] text-white"
+      className="relative h-[300svh] bg-[#100816] text-white"
     >
-      <div className="sticky top-0 isolate h-screen overflow-hidden">
+      <div className="sticky top-0 isolate h-[100svh] overflow-hidden">
         <div className="absolute inset-0">
-          {chapters.map((chapter, index) => (
-            <motion.div
-              key={chapter.label}
-              className="absolute inset-0"
-              style={{
-                opacity: prefersReducedMotion
-                  ? activeChapter === index
-                    ? 1
-                    : 0
-                  : chapterOpacities[index],
-              }}
-            >
-              <Image
-                src={chapter.image}
-                alt=""
-                fill
-                sizes="100vw"
-                preload={index === 0}
-                className="object-cover object-center"
-              />
-            </motion.div>
-          ))}
+          <Image
+            key={chapters[activeChapter].image}
+            src={chapters[activeChapter].image}
+            alt={chapters[activeChapter].alt}
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+          />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(9,4,16,0.92)_0%,rgba(18,7,29,0.8)_38%,rgba(12,7,18,0.2)_100%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(9,4,16,0.64)_0%,transparent_45%,rgba(9,4,16,0.16)_100%)]" />
         </div>
