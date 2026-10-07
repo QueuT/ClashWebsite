@@ -30,8 +30,25 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${archivo.variable} ${manrope.variable} h-full antialiased`}>
-      <body className="min-h-full bg-slate-50 text-slate-900">
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${archivo.variable} ${manrope.variable} h-full antialiased`}
+    >
+      <body className="min-h-full bg-background text-foreground antialiased transition-colors duration-300">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (() => {
+                const key = 'clash-theme';
+                const stored = localStorage.getItem(key);
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const theme = stored || (prefersDark ? 'dark' : 'light');
+                document.documentElement.dataset.theme = theme;
+              })();
+            `,
+          }}
+        />
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="flex-1">{children}</main>

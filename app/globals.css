@@ -1,33 +1,80 @@
 @import "tailwindcss";
 
-/* This is the brand layer: a small, controlled palette so the site feels premium,
-   athletic, and consistent without turning every section into a rainbow. */
 :root {
-  --clash-primary: #c12525;
-  --clash-secondary: #f5d76e;
-  --clash-dark: #0f172a;
-  --clash-light: #f3f5f7;
-  --clash-muted: #64748b;
+  --background: #f5f7fb;
+  --background-strong: #eef2ff;
+  --surface: #ffffff;
+  --surface-alt: #f4f1fb;
+  --surface-strong: #111827;
+  --foreground: #171a2d;
+  --foreground-soft: #4a5368;
+  --muted: #697488;
+  --primary: #3f296d;
+  --primary-strong: #2d1d4f;
+  --primary-soft: rgba(63, 41, 109, 0.12);
+  --accent: #1ebbb8;
+  --accent-strong: #119d9b;
+  --accent-soft: rgba(30, 187, 184, 0.14);
+  --border: rgba(23, 26, 45, 0.1);
+  --shadow-soft: 0 18px 48px rgba(17, 24, 39, 0.08);
+  --shadow-strong: 0 28px 80px rgba(17, 24, 39, 0.14);
+  --hero-overlay: rgba(11, 14, 24, 0.6);
+}
+
+html[data-theme="dark"] {
+  --background: #090d17;
+  --background-strong: #101827;
+  --surface: #101827;
+  --surface-alt: #172131;
+  --surface-strong: #0b1220;
+  --foreground: #edf3ff;
+  --foreground-soft: #d7deef;
+  --muted: #9ca9bf;
+  --primary: #a88cff;
+  --primary-strong: #c4b1ff;
+  --primary-soft: rgba(168, 140, 255, 0.18);
+  --accent: #48d9d1;
+  --accent-strong: #8feef0;
+  --accent-soft: rgba(72, 217, 209, 0.16);
+  --border: rgba(196, 208, 255, 0.12);
+  --shadow-soft: 0 20px 56px rgba(4, 5, 12, 0.32);
+  --shadow-strong: 0 32px 90px rgba(4, 5, 12, 0.48);
+  --hero-overlay: rgba(6, 10, 17, 0.72);
 }
 
 @theme inline {
-  --color-clash-primary: var(--clash-primary);
-  --color-clash-secondary: var(--clash-secondary);
-  --color-clash-dark: var(--clash-dark);
-  --color-clash-light: var(--clash-light);
-  --color-clash-muted: var(--clash-muted);
+  --color-background: var(--background);
+  --color-background-strong: var(--background-strong);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-surface-strong: var(--surface-strong);
+  --color-foreground: var(--foreground);
+  --color-foreground-soft: var(--foreground-soft);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-border: var(--border);
   --font-sans: var(--font-manrope);
   --font-display: var(--font-archivo);
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--background);
 }
 
 body {
-  background: #f8fafc;
-  color: #0f172a;
+  background: radial-gradient(circle at top left, rgba(168, 140, 255, 0.12), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(30, 187, 184, 0.1), transparent 30%),
+    var(--background);
+  color: var(--foreground);
   font-family: var(--font-manrope), Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 h1,
@@ -57,5 +104,5 @@ a {
 }
 
 ::selection {
-  background: rgba(193, 37, 37, 0.12);
+  background: rgba(30, 187, 184, 0.2);
 }
