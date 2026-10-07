@@ -185,8 +185,8 @@ export default function HomePage() {
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">{team.gender}</p>
                   </div>
                   <h3 className="mt-4 text-2xl font-black tracking-[-0.06em] text-foreground">{team.name}</h3>
-                  <p className="mt-2 text-sm text-muted">{team.level}</p>
-                  <p className="mt-4 text-sm text-foreground-soft">Coach: {team.coach}</p>
+                  {team.level ? <p className="mt-2 text-sm text-muted">{team.level}</p> : null}
+                  {team.coach ? <p className="mt-4 text-sm text-foreground-soft">Coach: {team.coach}</p> : null}
                   <Link href={`/teams/${team.slug}`} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-foreground hover:text-primary">
                     View Team
                     <span aria-hidden="true">→</span>

@@ -1,5 +1,7 @@
 // Event items are easy to tweak here without rewriting any of the event cards. Good for keeping seasonal info current.
 
+import { registrationUrl, tryoutsEventUrl } from "./site";
+
 export type EventItem = {
   date: string;
   title: string;
@@ -16,7 +18,7 @@ export const events: EventItem[] = [
     location: "Denver, Colorado",
     description: "Tryouts for the upcoming girls season. Team placement and player evaluation details are shared at check-in.",
     ctaLabel: "Register",
-    href: "https://www.upperhand.com/",
+    href: tryoutsEventUrl,
   },
   {
     date: "Nov 1",
@@ -32,6 +34,6 @@ export const events: EventItem[] = [
     location: "TODO: Confirm location",
     description: "Skill-focused training designed to develop fundamentals, movement quality, and volleyball confidence.",
     ctaLabel: "Register",
-    href: "https://www.upperhand.com/",
+    href: registrationUrl,
   },
 ];

@@ -27,6 +27,13 @@ export function Button({
   }[variant];
 
   if (href) {
+    if (href.startsWith("mailto:") || href.startsWith("tel:")) {
+      return (
+        <a href={href} className={`${baseClass} ${variantClass} ${className}`}>
+          {children}
+        </a>
+      );
+    }
     return (
       <Link href={href} className={`${baseClass} ${variantClass} ${className}`}>
         {children}

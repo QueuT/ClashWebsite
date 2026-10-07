@@ -10,11 +10,13 @@ export const siteConfig = {
   tagline: "Volleyball Club",
   location: "Colorado",
   email: "clashcovbc@gmail.com",
-  phone: "TODO: Add official phone number",
+  sponsor: {
+    name: "Slunks",
+    note: "Colorado Clash is a Slunks-sponsored club. Athletes wear official Slunks apparel at national events, major tournaments, and team travel whenever they are with the team and not actively competing.",
+  },
   social: {
     instagram: "@coclashvbc",
     instagramUrl: "https://www.instagram.com/coclashvbc/",
-    facebook: "TODO: Add official Facebook",
   },
 };
 
@@ -28,5 +30,10 @@ export const navItems: NavItem[] = [
   { label: "Contact", href: "/contact" },
 ];
 
-export const registrationUrl = "https://www.upperhand.com/";
-export const merchUrl = "https://www.example.com/";
+export const registrationUrl =
+  "https://app.upperhand.io/customers/2838-colorado-clash-vbc/offerings";
+
+export const tryoutsEventUrl =
+  "https://app.upperhand.io/customers/2838-colorado-clash-vbc/events/199459-girls-volleyball-tryouts";
+
+export const merchUrl = "https://www.coclashvbc.com/category/all-products";

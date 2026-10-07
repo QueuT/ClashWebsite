@@ -5,12 +5,12 @@ import Link from "next/link";
 export default function NotFound() {
   return (
     <div className="mx-auto flex max-w-3xl flex-col items-center justify-center px-4 py-24 text-center">
-      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-clash-primary">404</p>
-      <h1 className="mt-4 text-5xl font-black tracking-tight text-slate-950">Page not found</h1>
-      <p className="mt-4 text-base leading-8 text-slate-600">
+      <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary">404</p>
+      <h1 className="mt-4 text-5xl font-black tracking-tight text-foreground">Page not found</h1>
+      <p className="mt-4 text-base leading-8 text-foreground-soft">
         The page you are looking for does not exist or is still being finalized.
       </p>
-      <Link href="/" className="mt-8 inline-flex rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-white hover:bg-slate-800">
+      <Link href="/" className="mt-8 inline-flex rounded-full bg-primary px-6 py-3 text-sm font-semibold uppercase tracking-[0.12em] text-white hover:bg-primary-strong">
         Return home
       </Link>
     </div>

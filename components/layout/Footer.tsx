@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { navItems, siteConfig } from "@/data/site";
+import { navItems, registrationUrl, siteConfig } from "@/data/site";
 
 export function Footer() {
   return (
@@ -40,13 +40,12 @@ export function Footer() {
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white">Contact</p>
           <ul className="mt-5 space-y-3 text-sm text-slate-300">
             <li>{siteConfig.email}</li>
-            <li>{siteConfig.phone}</li>
             <li>
               <Link href={siteConfig.social.instagramUrl} target="_blank" rel="noreferrer" className="transition hover:text-white">
                 Instagram {siteConfig.social.instagram}
               </Link>
             </li>
-            <li><Link href="https://upperhand.com" className="transition hover:text-white">Upper Hand</Link></li>
+            <li><Link href={registrationUrl} className="transition hover:text-white">Register on Upper Hand</Link></li>
             <li><Link href="/faq" className="transition hover:text-white">FAQ</Link></li>
           </ul>
         </div>
@@ -55,7 +54,7 @@ export function Footer() {
       <div className="border-t border-slate-800">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-sm text-slate-400 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <p>© 2026 Colorado Clash VBC</p>
-          <p>Built for athletes, families, and the competitive volleyball community.</p>
+          <p>Proudly sponsored by Slunks. Built for athletes, families, and the competitive volleyball community.</p>
         </div>
       </div>
     </footer>

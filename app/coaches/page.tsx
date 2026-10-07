@@ -16,14 +16,14 @@ export default function CoachesPage() {
 
       <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {coaches.map((coach) => (
-          <article key={coach.role} className="overflow-hidden rounded-4xl border border-slate-200 bg-white shadow-sm">
+          <article key={coach.role} className="overflow-hidden rounded-4xl border border-border bg-surface shadow-sm">
             <div className="relative h-80 w-full">
               <Image src={coach.image} alt={coach.imageAlt} fill sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover" />
             </div>
             <div className="p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-clash-primary">{coach.role}</p>
-              <h2 className="mt-4 text-3xl font-black tracking-[-0.06em] text-slate-950">{coach.name}</h2>
-              <p className="mt-4 text-sm leading-7 text-slate-600">{coach.bio}</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">{coach.role}</p>
+              <h2 className="mt-4 text-3xl font-black tracking-[-0.06em] text-foreground">{coach.name}</h2>
+              <p className="mt-4 text-sm leading-7 text-foreground-soft">{coach.bio}</p>
             </div>
           </article>
         ))}
