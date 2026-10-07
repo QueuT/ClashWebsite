@@ -1,79 +1,112 @@
-"use client";
-
-// This is the main homepage. It tries to say, "this is a serious volleyball club" in under a minute,
-// so parents can get the gist quickly without scrolling through a giant wall of marketing copy.
-
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { VolleyballStory } from "@/components/ui/VolleyballStory";
 import { coaches } from "@/data/coaches";
 import { events } from "@/data/events";
 import { programs } from "@/data/programs";
 import { teams } from "@/data/teams";
-import { registrationUrl } from "@/data/site";
+import { registrationUrl, siteConfig } from "@/data/site";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0 },
-};
+const mascotMarks = [
+  {
+    name: "Bison",
+    image: "/coclash/mascot-bison.png",
+  },
+  {
+    name: "Longhorns",
+    image: "/coclash/mascot-longhorns.png",
+  },
+  {
+    name: "Rhino",
+    image: "/coclash/mascot-rhino.png",
+  },
+  {
+    name: "Rams",
+    image: "/coclash/mascot-rams.png",
+  },
+];
 
 export default function HomePage() {
   return (
     <div>
-      {/* Hero first, because the first impression matters most. A strong image and a punchy headline do a lot of heavy lifting. */}
-      <section className="relative isolate overflow-hidden bg-slate-950">
+      <section className="court-shell relative isolate overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(87,16,143,0.42),transparent_34%),linear-gradient(125deg,#100816_0%,#351052_46%,#07080d_100%)]">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1400&q=80"
-            alt="Volleyball athletes in action"
+            src="/coclash/home-team-photo-02.jpg"
+            alt="Colorado Clash athletes celebrate together after a game"
             fill
             priority
-            className="object-cover opacity-60"
+            sizes="100vw"
+            className="object-cover opacity-65"
           />
-          <div className="absolute inset-0 bg-linear-to-r from-slate-950 via-slate-950/85 to-slate-900/40" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,5,13,0.84)_0%,rgba(17,9,27,0.72)_42%,rgba(8,8,12,0.28)_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,191,202,0.38),transparent_24%),radial-gradient(circle_at_bottom_left,rgba(87,16,143,0.34),transparent_34%)]" />
         </div>
 
-        <Container className="relative py-20 sm:py-24 lg:py-32">
-          <motion.div
-            initial="hidden"
-            animate="show"
-            variants={fadeUp}
-            transition={{ duration: 0.55, ease: "easeOut" }}
-            className="max-w-2xl"
-          >
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.35em] text-slate-200">
+        <Container className="relative py-20 sm:py-24 lg:py-28">
+          <div className="max-w-2xl">
+            <p className="mb-5 inline-flex rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.28em] text-accent-strong">
               Colorado Clash Volleyball Club
             </p>
-            <h1 className="text-balance text-5xl font-black tracking-[-0.08em] text-white sm:text-6xl lg:text-7xl">
-              PLAY WITH PURPOSE.
-              <span className="mt-2 block text-clash-secondary">COMPETE WITH CLASH.</span>
+            <h1 className="text-balance text-5xl font-black tracking-[-0.08em] text-white sm:text-6xl lg:text-[5rem]">
+              TEAM OVER
+              <span className="mt-2 block text-accent">TALENT.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-200">
               We develop confident athletes through teamwork, discipline, and competitive play that builds lasting character.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Button href="/tryouts" className="shadow-lg shadow-red-950/40">
-                TRYOUTS / FIND YOUR TEAM
-              </Button>
+              <Button href="/tryouts">Find your team</Button>
               <Button
                 href="/programs"
                 variant="ghost"
-                className="border border-white/30 bg-white/5 text-white hover:bg-white/10"
+                className="border border-white/20 bg-white/5 text-white hover:border-white/40 hover:bg-white/10"
               >
-                EXPLORE PROGRAMS
+                Explore programs
               </Button>
             </div>
-          </motion.div>
+          </div>
+
+          <div className="mt-12 grid gap-4 md:grid-cols-3">
+            {[
+              ["Youth athletes", "10+ club pathways"],
+              ["Competitive culture", "Built for growth"],
+              ["Team-first mindset", "Performance with purpose"],
+            ].map(([title, subtitle]) => (
+              <div key={title} className="court-card rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-accent-strong">{title}</p>
+                <p className="mt-3 text-sm text-slate-200">{subtitle}</p>
+              </div>
+            ))}
+          </div>
         </Container>
       </section>
 
-      <section className="py-20">
+      <VolleyballStory />
+
+      <section aria-label="Colorado Clash mascot marks" className="border-y border-border bg-surface-alt py-3">
+        <Container className="flex max-w-3xl items-center justify-around gap-4 sm:gap-8">
+          {mascotMarks.map((mascot) => (
+            <Image
+              key={mascot.name}
+              src={mascot.image}
+              alt={`${mascot.name} mascot mark`}
+              width={112}
+              height={112}
+              unoptimized
+              className="h-16 w-16 object-contain sm:h-24 sm:w-24"
+            />
+          ))}
+        </Container>
+      </section>
+
+      <section className="court-panel py-20">
         <Container>
           <SectionHeading
-            eyebrow="Team Over Talent"
+            eyebrow="Team over talent"
             title="Volleyball is the vehicle. The team is the destination."
             description="Colorado Clash builds athletes who compete with purpose, support one another, and grow through challenge."
             align="center"
@@ -94,25 +127,16 @@ export default function HomePage() {
                 text: "Create relationships that extend beyond the court and strengthen the athlete experience at every level.",
               },
             ].map((item) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.4 }}
-                className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm"
-              >
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-clash-primary">
-                  {item.title}
-                </p>
-                <p className="mt-5 text-lg leading-8 text-slate-600">{item.text}</p>
-              </motion.div>
+              <div key={item.title} className="court-card rounded-[2rem] border border-border bg-surface p-8 shadow-[var(--shadow-soft)]">
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-primary">{item.title}</p>
+                <p className="mt-5 text-lg leading-8 text-foreground-soft">{item.text}</p>
+              </div>
             ))}
           </div>
         </Container>
       </section>
 
-      <section className="bg-slate-900 py-20 text-white">
+      <section className="court-panel bg-surface-alt py-20">
         <Container>
           <SectionHeading
             eyebrow="Programs"
@@ -122,18 +146,17 @@ export default function HomePage() {
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
             {programs.map((program) => (
-              <div key={program.slug} className="overflow-hidden rounded-3xl border border-slate-700 bg-slate-950">
-                <div className="relative h-56 w-full">
-                  <Image src={program.image} alt={program.name} fill className="object-cover" />
+              <div key={program.slug} className="court-card group overflow-hidden rounded-[2rem] border border-border bg-surface shadow-[var(--shadow-soft)] transition hover:-translate-y-1 hover:shadow-[var(--shadow-strong)]">
+                <div className="relative h-56 w-full overflow-hidden">
+                  <Image src={program.image} alt={program.name} fill sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" />
                 </div>
                 <div className="p-6">
-                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-clash-secondary">
-                    {program.ageGroup}
-                  </p>
-                  <h3 className="mt-3 text-2xl font-black tracking-[-0.06em] text-white">{program.name}</h3>
-                  <p className="mt-4 text-sm leading-7 text-slate-300">{program.shortDescription}</p>
-                  <Link href={program.href} className="mt-6 inline-flex text-sm font-semibold uppercase tracking-[0.12em] text-white hover:text-clash-secondary">
+                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-primary">{program.ageGroup}</p>
+                  <h3 className="mt-3 text-2xl font-black tracking-[-0.06em] text-foreground">{program.name}</h3>
+                  <p className="mt-4 text-sm leading-7 text-foreground-soft">{program.shortDescription}</p>
+                  <Link href={program.href} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-foreground hover:text-primary">
                     Explore {program.name}
+                    <span aria-hidden="true">→</span>
                   </Link>
                 </div>
               </div>
@@ -142,7 +165,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section className="py-20">
+      <section className="court-panel py-20">
         <Container>
           <SectionHeading
             eyebrow="Featured teams"
@@ -152,20 +175,21 @@ export default function HomePage() {
 
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {teams.map((team) => (
-              <div key={team.slug} className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-                <div className="relative h-64 w-full">
-                  <Image src={team.image} alt={team.name} fill className="object-cover" />
+              <div key={team.slug} className="court-card group overflow-hidden rounded-[2rem] border border-border bg-surface shadow-[var(--shadow-soft)] transition hover:-translate-y-1 hover:shadow-[var(--shadow-strong)]">
+                <div className="relative h-64 w-full overflow-hidden">
+                  <Image src={team.image} alt={team.name} fill sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" />
                 </div>
                 <div className="p-5">
                   <div className="flex items-center justify-between gap-3">
-                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-clash-primary">{team.ageGroup}</p>
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{team.gender}</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-primary">{team.ageGroup}</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted">{team.gender}</p>
                   </div>
-                  <h3 className="mt-4 text-2xl font-black tracking-[-0.06em] text-slate-950">{team.name}</h3>
-                  <p className="mt-2 text-sm text-slate-600">{team.level}</p>
-                  <p className="mt-4 text-sm text-slate-600">Coach: {team.coach}</p>
-                  <Link href={`/teams/${team.slug}`} className="mt-5 inline-flex text-sm font-semibold uppercase tracking-[0.12em] text-slate-950 hover:text-clash-primary">
+                  <h3 className="mt-4 text-2xl font-black tracking-[-0.06em] text-foreground">{team.name}</h3>
+                  <p className="mt-2 text-sm text-muted">{team.level}</p>
+                  <p className="mt-4 text-sm text-foreground-soft">Coach: {team.coach}</p>
+                  <Link href={`/teams/${team.slug}`} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.12em] text-foreground hover:text-primary">
                     View Team
+                    <span aria-hidden="true">→</span>
                   </Link>
                 </div>
               </div>
@@ -174,7 +198,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section className="bg-slate-100 py-20">
+      <section className="court-panel bg-surface-alt py-20">
         <Container>
           <SectionHeading
             eyebrow="Upcoming events"
@@ -184,15 +208,15 @@ export default function HomePage() {
 
           <div className="mt-10 space-y-5">
             {events.map((event) => (
-              <div key={event.title} className="grid gap-4 rounded-3xl border border-slate-200 bg-white p-6 md:grid-cols-[120px_1.6fr_1.2fr_auto] md:items-center">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-clash-primary">{event.date}</p>
+              <div key={event.title} className="court-card grid gap-4 rounded-[2rem] border border-border bg-surface p-6 shadow-[var(--shadow-soft)] md:grid-cols-[120px_1.6fr_1.2fr_auto] md:items-center">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">{event.date}</p>
                 <div>
-                  <h3 className="text-2xl font-black tracking-tighter text-slate-950">{event.title}</h3>
-                  <p className="mt-2 text-sm text-slate-600">{event.location}</p>
-                  <p className="mt-3 text-sm leading-7 text-slate-600">{event.description}</p>
+                  <h3 className="text-2xl font-black tracking-[-0.05em] text-foreground">{event.title}</h3>
+                  <p className="mt-2 text-sm text-muted">{event.location}</p>
+                  <p className="mt-3 text-sm leading-7 text-foreground-soft">{event.description}</p>
                 </div>
-                <div className="text-sm text-slate-500">{event.location}</div>
-                <Link href={event.href} className="inline-flex items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-slate-900 hover:border-slate-900">
+                <div className="text-sm text-muted">{event.location}</div>
+                <Link href={event.href} className="inline-flex items-center justify-center rounded-full border border-border bg-surface-alt px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-foreground transition hover:border-primary hover:text-primary">
                   {event.ctaLabel}
                 </Link>
               </div>
@@ -201,7 +225,29 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section className="py-20">
+      <section className="bg-surface-alt py-20">
+        <Container>
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <SectionHeading
+              eyebrow="Instagram"
+              title="Follow Colorado Clash"
+              description="The latest from the club, straight from Instagram."
+            />
+            <Button href={siteConfig.social.instagramUrl} variant="secondary" className="shrink-0">
+              View Instagram
+            </Button>
+          </div>
+          <iframe
+            src="https://www.instagram.com/coclashvbc/embed"
+            title="Colorado Clash Instagram feed"
+            loading="lazy"
+            allowFullScreen
+            className="mx-auto mt-10 block h-[680px] w-full max-w-[560px] rounded-lg border border-border bg-white"
+          />
+        </Container>
+      </section>
+
+      <section className="court-panel py-20">
         <Container>
           <SectionHeading
             eyebrow="Why Clash"
@@ -215,8 +261,8 @@ export default function HomePage() {
               { title: "Competition", text: "We help athletes perform with purpose while learning how to compete with composure and intensity." },
               { title: "Community", text: "Families, athletes, and coaches build trust and connection that extends beyond the season." },
             ].map((pill) => (
-              <div key={pill.title} className="rounded-3xl border border-slate-200 bg-slate-950 p-8 text-white">
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-clash-secondary">{pill.title}</p>
+              <div key={pill.title} className="court-card rounded-[2rem] border border-border bg-surface-strong p-8 text-white shadow-[var(--shadow-strong)]">
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">{pill.title}</p>
                 <p className="mt-5 text-lg leading-8 text-slate-200">{pill.text}</p>
               </div>
             ))}
@@ -226,15 +272,15 @@ export default function HomePage() {
 
       <section className="pb-20">
         <Container>
-          <div className="rounded-4xl bg-slate-950 px-6 py-12 text-white sm:px-10 lg:px-12">
+          <div className="court-shell rounded-[2.25rem] bg-[linear-gradient(135deg,#4b2f7d_0%,#2b6dbe_35%,#19b8b4_100%)] px-6 py-12 text-white shadow-[var(--shadow-strong)] sm:px-10 lg:px-12">
             <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-clash-secondary">Ready to join the Clash?</p>
-                <h2 className="mt-4 text-4xl font-black tracking-[-0.06em] text-white">Find your team. Start your journey.</h2>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] text-white/80">Ready to join the Clash?</p>
+                <h2 className="mt-4 text-4xl font-black tracking-[-0.06em] text-white sm:text-5xl">Find your team. Start the climb.</h2>
               </div>
               <div className="flex flex-col gap-4 sm:flex-row">
-                <Button href="/tryouts">View tryouts</Button>
-                <Button href="/contact" variant="ghost" className="border-white/20 bg-white/5 text-white hover:bg-white/10">
+                <Button href="/tryouts" className="bg-white text-primary hover:bg-slate-100">View tryouts</Button>
+                <Button href="/contact" variant="ghost" className="border-white/30 bg-white/5 text-white hover:bg-white/10">
                   Contact us
                 </Button>
               </div>
@@ -253,14 +299,14 @@ export default function HomePage() {
 
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {coaches.map((coach) => (
-              <div key={coach.name} className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
-                <div className="relative h-72 w-full">
-                  <Image src={coach.image} alt={coach.name} fill className="object-cover" />
+              <div key={coach.role} className="court-card group overflow-hidden rounded-[2rem] border border-border bg-surface shadow-[var(--shadow-soft)] transition hover:-translate-y-1 hover:shadow-[var(--shadow-strong)]">
+                <div className="relative h-72 w-full overflow-hidden">
+                  <Image src={coach.image} alt={coach.imageAlt} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition duration-500 group-hover:scale-105" />
                 </div>
                 <div className="p-6">
-                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-clash-primary">{coach.role}</p>
-                  <h3 className="mt-3 text-2xl font-black tracking-[-0.06em] text-slate-950">{coach.name}</h3>
-                  <p className="mt-4 text-sm leading-7 text-slate-600">{coach.bio}</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary">{coach.role}</p>
+                  <h3 className="mt-3 text-2xl font-black tracking-[-0.06em] text-foreground">{coach.name}</h3>
+                  <p className="mt-4 text-sm leading-7 text-foreground-soft">{coach.bio}</p>
                 </div>
               </div>
             ))}
@@ -269,11 +315,11 @@ export default function HomePage() {
       </section>
 
       <section className="pb-20">
-        <Container className="rounded-4xl border border-slate-200 bg-white p-8 shadow-sm sm:p-12">
+        <Container className="court-card rounded-[2.25rem] border border-border bg-surface p-8 shadow-[var(--shadow-soft)] sm:p-12">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-clash-primary">Quick access</p>
-              <h2 className="mt-3 text-4xl font-black tracking-[-0.06em] text-slate-950">Register with Upper Hand</h2>
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-primary">Quick access</p>
+              <h2 className="mt-3 text-4xl font-black tracking-[-0.06em] text-foreground">Register with Upper Hand</h2>
             </div>
             <Button href={registrationUrl}>Register now</Button>
           </div>

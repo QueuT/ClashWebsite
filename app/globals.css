@@ -1,33 +1,85 @@
 @import "tailwindcss";
 
-/* This is the brand layer: a small, controlled palette so the site feels premium,
-   athletic, and consistent without turning every section into a rainbow. */
 :root {
-  --clash-primary: #c12525;
-  --clash-secondary: #f5d76e;
-  --clash-dark: #0f172a;
-  --clash-light: #f3f5f7;
-  --clash-muted: #64748b;
+  --background: #f8f5fc;
+  --background-strong: #eee5f7;
+  --surface: #ffffff;
+  --surface-alt: #f0e8f7;
+  --surface-strong: #100a16;
+  --foreground: #1b1026;
+  --foreground-soft: #53465f;
+  --muted: #756a80;
+  --primary: #57108f;
+  --primary-strong: #390568;
+  --primary-soft: rgba(87, 16, 143, 0.14);
+  --accent: #00bfca;
+  --accent-strong: #008f9b;
+  --accent-soft: rgba(0, 191, 202, 0.16);
+  --border: rgba(45, 20, 65, 0.13);
+  --court-line: rgba(87, 16, 143, 0.2);
+  --court-line-strong: rgba(0, 191, 202, 0.38);
+  --shadow-soft: 0 18px 48px rgba(36, 13, 55, 0.1);
+  --shadow-strong: 0 28px 80px rgba(25, 7, 39, 0.2);
+  --hero-overlay: rgba(9, 5, 15, 0.72);
+}
+
+html[data-theme="dark"] {
+  --background: #090d17;
+  --background-strong: #101827;
+  --surface: #101827;
+  --surface-alt: #172131;
+  --surface-strong: #0b1220;
+  --foreground: #edf3ff;
+  --foreground-soft: #d7deef;
+  --muted: #9ca9bf;
+  --primary: #bd7dff;
+  --primary-strong: #d6b1ff;
+  --primary-soft: rgba(189, 125, 255, 0.2);
+  --accent: #35dbe3;
+  --accent-strong: #75f1f2;
+  --accent-soft: rgba(53, 219, 227, 0.18);
+  --border: rgba(196, 208, 255, 0.12);
+  --court-line: rgba(189, 125, 255, 0.25);
+  --court-line-strong: rgba(53, 219, 227, 0.36);
+  --shadow-soft: 0 20px 56px rgba(4, 5, 12, 0.32);
+  --shadow-strong: 0 32px 90px rgba(4, 5, 12, 0.48);
+  --hero-overlay: rgba(6, 10, 17, 0.72);
 }
 
 @theme inline {
-  --color-clash-primary: var(--clash-primary);
-  --color-clash-secondary: var(--clash-secondary);
-  --color-clash-dark: var(--clash-dark);
-  --color-clash-light: var(--clash-light);
-  --color-clash-muted: var(--clash-muted);
+  --color-background: var(--background);
+  --color-background-strong: var(--background-strong);
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-surface-strong: var(--surface-strong);
+  --color-foreground: var(--foreground);
+  --color-foreground-soft: var(--foreground-soft);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-border: var(--border);
   --font-sans: var(--font-manrope);
   --font-display: var(--font-archivo);
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--background);
 }
 
 body {
-  background: #f8fafc;
-  color: #0f172a;
+  background:
+    radial-gradient(circle at top left, rgba(168, 140, 255, 0.2), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(30, 187, 184, 0.18), transparent 32%),
+    var(--background);
+  color: var(--foreground);
   font-family: var(--font-manrope), Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 h1,
@@ -56,6 +108,77 @@ a {
   text-wrap: balance;
 }
 
+.volleyball-story-court {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background:
+    linear-gradient(to bottom, transparent calc(52% - 1px), rgba(0, 191, 202, 0.38) 52%, transparent calc(52% + 1px)),
+    linear-gradient(to right, transparent calc(50% - 1px), rgba(255, 255, 255, 0.2) 50%, transparent calc(50% + 1px));
+}
+
+.volleyball-mark {
+  position: relative;
+  display: block;
+  width: 36px;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid rgba(45, 29, 79, 0.4);
+  border-radius: 50%;
+  background: conic-gradient(from 18deg, #fff 0 23%, #00bfca 23% 38%, #fff 38% 61%, #57108f 61% 77%, #fff 77% 100%);
+  box-shadow: inset -4px -5px 7px rgba(45, 9, 73, 0.18), inset 3px 3px 6px rgba(255, 255, 255, 0.9);
+}
+
+.volleyball-mark::before,
+.volleyball-mark::after {
+  content: "";
+  position: absolute;
+  border-color: rgba(63, 41, 109, 0.8);
+  border-style: solid;
+  border-radius: 50%;
+}
+
+.volleyball-mark::before {
+  inset: -2px 24%;
+  border-width: 0 1.5px;
+  transform: rotate(28deg);
+}
+
+.volleyball-mark::after {
+  inset: 24% -2px;
+  border-width: 1.5px 0;
+  transform: rotate(-28deg);
+}
+
+.volleyball-mark--story {
+  width: clamp(56px, 7vw, 92px);
+  border-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 32px rgba(0, 191, 202, 0.45), inset -4px -5px 7px rgba(45, 9, 73, 0.18), inset 3px 3px 6px rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 640px) {
+  .volleyball-story-court {
+    inset: 10px;
+  }
+
+  .volleyball-mark--story {
+    width: 58px;
+  }
+}
+
 ::selection {
-  background: rgba(193, 37, 37, 0.12);
+  background: rgba(30, 187, 184, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -9,10 +9,11 @@ export const siteConfig = {
   name: "Colorado Clash VBC",
   tagline: "Volleyball Club",
   location: "Colorado",
-  email: "TODO: Add official club email",
+  email: "clashcovbc@gmail.com",
   phone: "TODO: Add official phone number",
   social: {
-    instagram: "TODO: Add official Instagram",
+    instagram: "@coclashvbc",
+    instagramUrl: "https://www.instagram.com/coclashvbc/",
     facebook: "TODO: Add official Facebook",
   },
 };

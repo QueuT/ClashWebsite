@@ -1,0 +1,18 @@
+# Original image sources from the club home page and Teams page.
+# Main crest
+https://static.wixstatic.com/media/d5ac41_5022299d479d4709b4a37575c31159aa~mv2.png
+# Official mascot marks
+https://static.wixstatic.com/media/d5ac41_25273aaab34e40e4b5c096dbccc6d622~mv2.png
+https://static.wixstatic.com/media/d5ac41_4946c0c2c77048bca1f74536ad14a420~mv2.png
+https://static.wixstatic.com/media/d5ac41_7c8ef308655f458d8983d6dbdff34683~mv2.png
+https://static.wixstatic.com/media/d5ac41_a6b4c08dc77a4d1fb5e792f59f7805d4~mv2.png
+# Homepage team photos
+https://static.wixstatic.com/media/d5ac41_d744d7b3690b415c8f819e58e4d777f3~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_8b6a220ef5754b15887fcfcc0ef6e278~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_700fc4fb7663489aa8a548ee6df053c4~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_0d3b68a1b0664894be12b23480ce3425~mv2.png
+# Additional Teams page artwork
+https://static.wixstatic.com/media/d5ac41_d59fdfdb4ec44edbadac436af16f5981~mv2.png
+https://static.wixstatic.com/media/d5ac41_013fcbf1b9514637b7d9a66a8d65b6f2~mv2.png
+https://static.wixstatic.com/media/d5ac41_4d4344a4e7474c41a23c65f5c775a5bc~mv2.png
+https://static.wixstatic.com/media/d5ac41_e77931d012c245b892bd39b0b9536c0c~mv2.png

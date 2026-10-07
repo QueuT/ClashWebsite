@@ -1,12 +1,9 @@
 import Link from "next/link";
 import { navItems, siteConfig } from "@/data/site";
 
-// Footer stays simple: quick navigation, contact basics, and the little bit of polish
-// that makes the club feel established without dumping a million links at the bottom of the page.
-
 export function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-slate-950 text-slate-200">
+    <footer className="border-t border-border bg-surface-strong text-slate-200">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.3fr_0.9fr_0.9fr_1.1fr] lg:px-8">
         <div>
           <p className="text-2xl font-black tracking-[-0.08em] text-white">{siteConfig.name}</p>
@@ -44,6 +41,11 @@ export function Footer() {
           <ul className="mt-5 space-y-3 text-sm text-slate-300">
             <li>{siteConfig.email}</li>
             <li>{siteConfig.phone}</li>
+            <li>
+              <Link href={siteConfig.social.instagramUrl} target="_blank" rel="noreferrer" className="transition hover:text-white">
+                Instagram {siteConfig.social.instagram}
+              </Link>
+            </li>
             <li><Link href="https://upperhand.com" className="transition hover:text-white">Upper Hand</Link></li>
             <li><Link href="/faq" className="transition hover:text-white">FAQ</Link></li>
           </ul>

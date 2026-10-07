@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 
-// A single button component keeps the site consistent and saves us from building 12 slightly different versions everywhere.
-
 type ButtonProps = {
   href?: string;
   children: ReactNode;
@@ -17,15 +15,15 @@ export function Button({
   className = "",
 }: ButtonProps) {
   const baseClass =
-    "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold tracking-[0.08em] uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2";
+    "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold tracking-[0.12em] uppercase transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background hover:-translate-y-0.5";
 
   const variantClass = {
     primary:
-      "bg-clash-primary text-white shadow-sm hover:bg-red-700",
+      "bg-[linear-gradient(135deg,var(--primary)_0%,var(--accent)_100%)] text-white shadow-[0_20px_40px_rgba(63,41,109,0.24)] hover:shadow-[0_24px_52px_rgba(63,41,109,0.32)]",
     secondary:
-      "bg-slate-900 text-white hover:bg-slate-700",
+      "border border-border bg-surface text-foreground hover:border-primary hover:text-primary",
     ghost:
-      "border border-slate-300 bg-white text-slate-900 hover:border-slate-900 hover:bg-slate-50",
+      "border border-white/20 bg-white/5 text-white hover:border-white/40 hover:bg-white/10",
   }[variant];
 
   if (href) {

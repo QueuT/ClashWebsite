@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Archivo, Manrope } from "next/font/google";
 import type { ReactNode } from "react";
 import { Footer } from "@/components/layout/Footer";
@@ -30,8 +31,20 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${archivo.variable} ${manrope.variable} h-full antialiased`}>
-      <body className="min-h-full bg-slate-50 text-slate-900">
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${archivo.variable} ${manrope.variable} h-full antialiased`}
+    >
+      <body className="min-h-full bg-background text-foreground antialiased transition-colors duration-300">
+        <Script id="clash-theme-bootstrap" strategy="beforeInteractive">
+          {`(() => {
+            const key = 'clash-theme';
+            const stored = localStorage.getItem(key);
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.dataset.theme = stored || (prefersDark ? 'dark' : 'light');
+          })();`}
+        </Script>
         <div className="flex min-h-screen flex-col">
           <Navbar />
           <main className="flex-1">{children}</main>
