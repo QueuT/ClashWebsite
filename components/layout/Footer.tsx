@@ -41,6 +41,11 @@ export function Footer() {
           <ul className="mt-5 space-y-3 text-sm text-slate-300">
             <li>{siteConfig.email}</li>
             <li>{siteConfig.phone}</li>
+            <li>
+              <Link href={siteConfig.social.instagramUrl} target="_blank" rel="noreferrer" className="transition hover:text-white">
+                Instagram {siteConfig.social.instagram}
+              </Link>
+            </li>
             <li><Link href="https://upperhand.com" className="transition hover:text-white">Upper Hand</Link></li>
             <li><Link href="/faq" className="transition hover:text-white">FAQ</Link></li>
           </ul>

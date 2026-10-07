@@ -1,36 +1,44 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 
 const STORAGE_KEY = 'clash-theme';
+type Theme = 'light' | 'dark';
+
+const themeListeners = new Set<() => void>();
+
+function subscribeToTheme(listener: () => void) {
+  themeListeners.add(listener);
+  return () => themeListeners.delete(listener);
+}
+
+function getThemeSnapshot(): Theme {
+  return document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+}
+
+function getServerThemeSnapshot(): Theme {
+  return 'light';
+}
+
+function updateTheme(theme: Theme) {
+  document.documentElement.dataset.theme = theme;
+  window.localStorage.setItem(STORAGE_KEY, theme);
+  themeListeners.forEach((listener) => listener());
+}
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    if (typeof window === 'undefined') {
-      return 'light';
-    }
+  const theme = useSyncExternalStore(subscribeToTheme, getThemeSnapshot, getServerThemeSnapshot);
 
-    const storedTheme = window.localStorage.getItem(STORAGE_KEY) as 'light' | 'dark' | null;
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    return storedTheme ?? (prefersDark ? 'dark' : 'light');
-  });
-
-  useEffect(() => {
-    if (typeof window === 'undefined') {
-      return;
-    }
-
-    document.documentElement.dataset.theme = theme;
-    window.localStorage.setItem(STORAGE_KEY, theme);
-  }, [theme]);
+  function toggleTheme() {
+    updateTheme(theme === 'dark' ? 'light' : 'dark');
+  }
 
   return (
     <button
       type="button"
       aria-label="Toggle color theme"
       aria-pressed={theme === 'dark'}
-      onClick={() => setTheme((current) => (current === 'dark' ? 'light' : 'dark'))}
+      onClick={toggleTheme}
       className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-surface text-foreground shadow-sm transition hover:-translate-y-0.5 hover:border-primary hover:text-primary"
     >
       <span className="text-base" aria-hidden="true">{theme === 'dark' ? '☀' : '☾'}</span>

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
@@ -12,9 +13,14 @@ export function Navbar() {
     <header className="sticky top-0 z-50 border-b border-border/80 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3" aria-label="Colorado Clash home">
-          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[linear-gradient(135deg,var(--primary)_0%,var(--accent)_100%)] text-sm font-black text-white shadow-[0_16px_32px_rgba(63,41,109,0.25)]">
-            CC
-          </div>
+          <Image
+            src="/coclash/colorado-clash-crest.png"
+            alt=""
+            width={52}
+            height={52}
+            priority
+            className="h-12 w-12 rounded-md bg-white p-1.5 object-contain"
+          />
           <div>
             <p className="text-lg font-black tracking-[-0.06em] text-foreground">{siteConfig.name}</p>
           </div>

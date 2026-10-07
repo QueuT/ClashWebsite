@@ -16,9 +16,9 @@ export default function CoachesPage() {
 
       <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {coaches.map((coach) => (
-          <article key={coach.name} className="overflow-hidden rounded-4xl border border-slate-200 bg-white shadow-sm">
+          <article key={coach.role} className="overflow-hidden rounded-4xl border border-slate-200 bg-white shadow-sm">
             <div className="relative h-80 w-full">
-              <Image src={coach.image} alt={coach.name} fill className="object-cover" />
+              <Image src={coach.image} alt={coach.imageAlt} fill sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw" className="object-cover" />
             </div>
             <div className="p-6">
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-clash-primary">{coach.role}</p>

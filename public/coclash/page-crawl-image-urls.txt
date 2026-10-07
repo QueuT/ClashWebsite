@@ -1,0 +1,29 @@
+# Additional club media found by crawling all 12 public page-sitemap URLs.
+# Duplicates and Wix UI icons are excluded.
+https://static.wixstatic.com/media/d5ac41_195e29049e4440e3ad8a2ab1deabf87b~mv2.png
+https://static.wixstatic.com/media/d5ac41_19ad1d63be1849d7bf4e823f874e7571~mv2.png
+https://static.wixstatic.com/media/d5ac41_1f9ad1cf9b8b42cc92831c27e94f1b75~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_2609fe3c2f2e4dc790c2efc0e8baba00~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_263c1dc5e2844f2ebd004020ba6e44a7~mv2.png
+https://static.wixstatic.com/media/d5ac41_36609af3e0e84dc3b6e06d95e5affc57~mv2.png
+https://static.wixstatic.com/media/d5ac41_4ed6edb8b5f04b859a45d40dbdb2c1a3~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_51f7934a35c24021b325357357d1a63e~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_55c92b18a9454bfa8d37d54610ffca9b~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_57dcc03e26a145c282e2320fd5fe1fec~mv2.png
+https://static.wixstatic.com/media/d5ac41_658f9b9b46fc4f59b5bd7f6804763f6d~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_66abba3bd5764d9c85fd0218d75f8e6a~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_74dac52ad6b24128b8a140b1a44416f0~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_79defc0f937b408ebad263a89bbb5793~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_91ed7c89889f4435b0d1074d2be0cf56~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_9f0123344345469893f94e87bbfa11cf~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_a1c268b6ae9f46e09a313c4dfa5a40ed~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_ad4744aef34d4ec499bb139fe23dc946~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_b1f65add80994e0bac6938fe8b7fc413~mv2.png
+https://static.wixstatic.com/media/d5ac41_c9df84a8e52f482d90ad5e6304dea4a2~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_d5d10a485a334e6c9e0bccc55729c905~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_d6843f96984a4825a19de3a9336faa8b~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_eb60fbc4ce374d528d95793bd0f47731~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_edd7b3bbe0104e6886135005fe4d83b6~mv2.jpg
+https://static.wixstatic.com/media/d5ac41_f8d1cefa6df94f6487914b983f54c141~mv2.png
+https://static.wixstatic.com/media/d5ac41_fc3a00dc5aa04d27bd4e00e5eedcd83f~mv2.png
+https://static.wixstatic.com/media/d5ac41_fcfa1aecb6734f5b941384665d91cfd9~mv2.jpg

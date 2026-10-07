@@ -13,6 +13,7 @@ export const siteConfig = {
   phone: "TODO: Add official phone number",
   social: {
     instagram: "@coclashvbc",
+    instagramUrl: "https://www.instagram.com/coclashvbc/",
     facebook: "TODO: Add official Facebook",
   },
 };
